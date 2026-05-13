@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Vertexia Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="login">
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">VERTEXIA HUB</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="login.html" class="active">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <main class="container" style="padding: 40px 0 56px;">
+    <section style="max-width: 520px; margin: 0 auto;">
+      <div style="background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
+        <h1 style="font-family: var(--font-display); font-size: 28px; margin-bottom: 14px;">Welcome Back</h1>
+        <p style="color: var(--gray-600); margin-bottom: 26px;">Login to your account to check your ticket status and report issues.</p>
+
+        <form id="loginForm" action="login.html" method="post" novalidate>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" class="form-input" placeholder="you@example.com" required />
+            <div id="email_err" class="field-error">Please enter a valid email address.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" class="form-input" placeholder="Enter your password" required />
+            <div id="password_err" class="field-error">Please enter your password.</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">Login</button>
+
+          <p style="text-align: center; margin-top: 18px; color: var(--gray-600); font-size: 14px;">
+            Don't have an account? <a href="register.html" style="color: var(--blue); font-weight: 600;">Register here</a>
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>VERTEXIA HUB</h5>
+        <p>Transparent. Secure.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <a href="index.html">Home</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <a href="mailto:support@vertexiahub.com">Email Support</a>
+        <a href="#">Help Center</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Vertexia Hub. All rights reserved.</div>
+  </footer>
+
+  <script src="api.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

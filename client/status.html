@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check Status | Vertexia Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="status">
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">VERTEXIA HUB</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="report.html">Report Issue</a>
+      <a href="status.html" class="active">Check Status</a>
+      <a href="#" id="logoutBtn" style="display:none; color: rgba(255,255,255,0.75);">Logout</a>
+    </nav>
+  </header>
+
+  <main class="container" style="padding: 40px 0 56px;">
+    <section style="max-width: 760px; margin: 0 auto;">
+      <div style="background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); margin-bottom: 24px;">
+        <h1 style="font-family: var(--font-display); font-size: 28px; margin-bottom: 14px;">Check Your Issue Status</h1>
+        <p style="color: var(--gray-600); margin-bottom: 22px;">Enter your Ticket ID to check the current status of your issue.</p>
+
+        <form id="statusForm" action="status.html" method="post" novalidate class="status-search">
+          <div class="form-group" style="flex: 1; min-width: 220px;">
+            <label for="ticketInput">Ticket ID</label>
+            <input id="ticketInput" name="ticketInput" type="text" class="form-input" placeholder="#TR-1234" required />
+            <div id="ticketInput_err" class="field-error">Please enter a ticket ID.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Check Status</button>
+        </form>
+      </div>
+
+      <div class="status-process">
+        <article class="process-step">
+          <div class="process-icon">📝</div>
+          <h4>Report</h4>
+          <p>Submit your failed transaction details with a ticket.</p>
+        </article>
+        <article class="process-step">
+          <div class="process-icon">🔄</div>
+          <h4>Track</h4>
+          <p>Monitor progress as the support team reviews your issue.</p>
+        </article>
+        <article class="process-step">
+          <div class="process-icon">✅</div>
+          <h4>Resolve</h4>
+          <p>Receive confirmation once your issue is resolved.</p>
+        </article>
+      </div>
+
+      <div class="help-card">
+        <div>
+          <h4>Need Help?</h4>
+          <p>Contact support if you need personalized assistance with your ticket.</p>
+        </div>
+        <a href="mailto:support@vertexiahub.com" class="btn btn-white">Contact Support</a>
+      </div>
+
+      <div id="statusResult"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>VERTEXIA HUB</h5>
+        <p>Transparent. Secure.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Issue</a>
+        <a href="status.html">Check Status</a>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <a href="mailto:support@vertexiahub.com">Email Support</a>
+        <a href="#">Help Center</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Vertexia Hub. All rights reserved.</div>
+  </footer>
+
+  <script src="api.js"></script>
+  <script src="tickets.js"></script>
+</body>
+</html>
