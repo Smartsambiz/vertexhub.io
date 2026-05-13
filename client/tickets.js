@@ -186,7 +186,14 @@ if (document.getElementById('statusForm')) {
       return;
     }
 
-    const result = await getTicket(rawId);
+    const ticketId = rawId.replace(/^#/, '').trim();
+    if (!ticketId) {
+      showFieldError(input, 'Please enter a ticket ID without the # symbol.');
+      resultBox.innerHTML = '';
+      return;
+    }
+
+    const result = await getTicket(ticketId);
     
     if (!result.success) {
       resultBox.innerHTML = `

@@ -89,12 +89,20 @@ async function getTicket(ticketId) {
     return { success: false, message: 'Not authenticated' };
   }
 
-  const res = await fetch(`${API_BASE}/tickets/${ticketId}`, {
+  const cleanId = String(ticketId || '').trim().replace(/^#/, '');
+  if (!cleanId) {
+    return { success: false, message: 'Please provide a valid ticket ID.' };
+  }
+
+  const res = await fetch(`${API_BASE}/tickets/${encodeURIComponent(cleanId)}`, {
     method: 'GET',
     headers: { 'Authorization': `Bearer ${token}` },
   });
 
-  //console.log('API Response:', res);
-
-  return await res.json();
+  const text = await res.text();
+  try {
+    return JSON.parse(text);
+  } catch (error) {
+    return { success: false, message: `Unexpected API response (${res.status}): ${text}` };
+  }
 }
