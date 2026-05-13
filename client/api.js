@@ -1,4 +1,4 @@
-const API_BASE = 'http://127.0.0.1:3000/api';
+const API_BASE = 'https://vertexhub-io.vercel.app/api';
 
 function getToken() {
   return localStorage.getItem('authToken');
