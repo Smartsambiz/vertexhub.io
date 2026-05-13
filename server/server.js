@@ -20,6 +20,9 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log('MongoDB connection error:', err));
 
+app.get('/', (req, res) => {
+  res.send('Welcome to VertexHub API');
+});
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/tickets', require('./routes/tickets'));
 
