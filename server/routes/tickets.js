@@ -63,8 +63,8 @@ router.get('/:ticketId', protect, async (req, res) => {
       return res.status(404).json({ success: false, message: 'Ticket not found' });
     }
 
-    const createdAt = new Date(ticket.submittedAt).getTime();
-    const ageSec = (Date.now() - createdAt) / 1000;
+    // ✓ FIXED — use ticket.submittedAt directly
+    const ageSec = (Date.now() - new Date(ticket.submittedAt).getTime()) / 1000;
 
     if (ticket.status === 'SUBMITTED' && ageSec >= 60) {
       ticket.status = 'IN_PROGRESS';
