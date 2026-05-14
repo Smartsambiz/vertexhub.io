@@ -57,6 +57,10 @@ router.post('/register', async (req, res) => {
       },
     });
   } catch (error) {
+    // Handle MongoDB duplicate key error for email uniqueness
+    if (error.code === 11000 && error.keyPattern.email) {
+      return res.status(400).json({ success: false, message: 'Email already registered' });
+    }
     res.status(500).json({ success: false, message: error.message });
   }
 });
