@@ -1,5 +1,17 @@
 const mongoose = require('mongoose');
 
+const validatePassword = (password) => {
+  // Password must contain at least one number
+  if (!/\d/.test(password)) {
+    return false;
+  }
+  // Password must contain at least one special character
+  if (!/[!@#$%^&*\-_.+=]/.test(password)) {
+    return false;
+  }
+  return true;
+};
+
 const userSchema = new mongoose.Schema(
   {
     fullname: {
@@ -17,7 +29,11 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, 'Please provide a password'],
-      minlength: 6,
+      minlength: 8,
+      validate: {
+        validator: validatePassword,
+        message: 'Password must contain at least one number and one special character (!@#$%^&*-_.+=)',
+      },
       select: false,
     },
   },

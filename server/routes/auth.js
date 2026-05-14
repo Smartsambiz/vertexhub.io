@@ -18,6 +18,17 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Please provide all required fields' });
     }
 
+    // Validate password strength
+    if (password.length < 8) {
+      return res.status(400).json({ success: false, message: 'Password must be at least 8 characters long' });
+    }
+    if (!/\d/.test(password)) {
+      return res.status(400).json({ success: false, message: 'Password must contain at least one number' });
+    }
+    if (!/[!@#$%^&*\-_.+=]/.test(password)) {
+      return res.status(400).json({ success: false, message: 'Password must contain at least one special character (!@#$%^&*-_.+=)' });
+    }
+
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ success: false, message: 'Email already registered' });
